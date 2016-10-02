@@ -1,0 +1,9 @@
+#!/bin/sh
+
+mkdir -p log
+
+trap 'kill $(jobs -p)' EXIT
+
+DBUS_VERBOSE=1 dbus-daemon --print-address --config-file=example/session.conf | tee -a log/dbus.log 2>&1 &
+python2 websockify/run localhost:4000 127.0.0.1:4001 | tee -a log/websockify.log 2>&1 &
+wait
