@@ -66,14 +66,18 @@ Setup
 An example using the Pidgin API:
    
 ~~~
+// List available services.
+bus.listNames(console.log);
+
+// Connect with Pidgin and query what active accounts there are.
 bus
   .getService("im.pidgin.purple.PurpleService")
-  .getObject("/im/pidgin/purple/PurpleObject", (err,service) => {
+  .getObject("/im/pidgin/purple/PurpleObject", (err,obj) => {
     if (err)
       return console.error(err);
     
-    let purple = service.as('im.pidgin.purple.PurpleInterface');
-    
+    let purple = obj.as('im.pidgin.purple.PurpleInterface');
+
     purple.PurpleAccountsGetAllActive((err, accounts) => {
       if (err)
         return console.error(err);
