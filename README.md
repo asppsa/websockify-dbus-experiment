@@ -4,6 +4,17 @@ Websockify D-Bus Experiment
 This is some experimental code that attempts to allow one to talk to
 [D-Bus][4] from a website using [websockify][1].
 
+Scary warning
+-------------
+
+This code is only an experiment.  There is absolutely no security at
+present on the D-Bus server that gets run.  That means pretty much any
+website that you visit in the wild could open a websocket connection
+to this service if they know where to look.
+
+If you are running this, please be careful!
+
+
 Setup
 -----
 
